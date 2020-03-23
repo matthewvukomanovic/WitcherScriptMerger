@@ -1,7 +1,11 @@
-# Script Merger for The Witcher 3
+# Script Merger for The Witcher 3 - Vortex edition
 
-I threw together this tool because I got tired of manually merging script files.
+Special thanks to AnotherSymbiote for creating this tool and giving us permission to fiddle with it.
 
+This fork has been created to cater for/fix any issues that arise when using this tool alongside Vortex Mod Manager.
+
+
+As specified by the original creator:
 - Checks your Mods folder for mod conflicts.  Uses [QuickBMS](http://aluigi.altervista.org/quickbms.htm) to scan .bundle packages.
 - Merges .ws scripts or .xml files inside bundle packages using the powerful open-source merge tool [KDiff3](http://kdiff3.sourceforge.net/).
 - Packages new .bundle packages using the official mod tool [wcc_lite](http://www.nexusmods.com/witcher3/news/12625/?).
