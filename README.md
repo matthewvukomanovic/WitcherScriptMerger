@@ -3,6 +3,12 @@
 Special thanks to AnotherSymbiote for creating this tool and giving us permission to fiddle with it.
 You can find the original repo here: https://github.com/AnotherSymbiote/WitcherScriptMerger/
 
+Special thanks to the developers of the unofficial patch (Ryan Thomas, woodbyte and Partoutatix) for allowing us to merge their work in. You can find their repos here:
+
+Ryan Thomas   https://github.com/bncceo/WitcherScriptMerger
+woodbyte  https://github.com/woodbyte/WitcherScriptMerger
+Partoutatix  https://github.com/Partoutatix/WitcherScriptMerger
+
 This fork has been created to cater for/fix any issues that arise when using this tool alongside Vortex Mod Manager.
 
 
