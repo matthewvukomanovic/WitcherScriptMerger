@@ -32,7 +32,8 @@ namespace WitcherScriptMerger.Forms
 
         void MainForm_Load(object sender, EventArgs e)
         {
-            txtGameDir.Text = Program.Settings.Get("GameDirectory");
+            string gameDir = Program.Settings.Get("GameDirectory");
+            txtGameDir.Text = (Directory.Exists(gameDir)) ? gameDir : "";
             LoadLastWindowConfiguration();
         }
 
