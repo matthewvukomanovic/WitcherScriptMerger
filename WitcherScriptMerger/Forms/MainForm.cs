@@ -747,6 +747,47 @@ namespace WitcherScriptMerger.Forms
                     merge.RelativePath.EqualsIgnoreCase(node.Text)))
                     .ToList();
             DeleteMerges(merges);
+            if (Program.Inventory.Merges.Count == 0)
+            {
+                string gameDir = Program.Settings.Get("GameDirectory");
+                string mergeModPath = Path.Combine(gameDir, "Mods", Paths.RetrieveMergedModName());
+                if (!Directory.Exists(mergeModPath))
+                {
+                    // Folder is gone - nothing to do here.
+                    return;
+                }
+
+                // KDiff must've created a backup which is why the mod folder still exists.
+                string[] filePaths = Directory.GetFiles(mergeModPath, "*", SearchOption.AllDirectories);
+                string[] dirPaths = Directory.GetDirectories(mergeModPath, "*", SearchOption.AllDirectories)
+                    .OrderByDescending(dir => dir.Length).ToArray();
+                string errorMsg = "Merges have been removed successfully, but we were unable to automatically "
+                                + $"remove the generated merged mod folder: {mergeModPath}; please remove the folder manually.";
+                Array.ForEach(filePaths, filePath =>
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    } catch (Exception exc)
+                    {
+                        ShowError(errorMsg);
+                        return;
+                    }
+                });
+
+                Array.ForEach(dirPaths, dirPath =>
+                {
+                    try
+                    {
+                        Directory.Delete(dirPath);
+                    }
+                    catch (Exception exc)
+                    {
+                        ShowError(errorMsg);
+                        return;
+                    }
+                });
+            }
         }
 
         bool DeleteMerges(List<Merge> merges)
