@@ -19,7 +19,7 @@ namespace WitcherScriptMerger
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -39,6 +39,18 @@ namespace WitcherScriptMerger
                         return;
                     }
                 }
+            }
+
+            // Naive way to tell the program that its been executed through
+            //  Vortex - this will have to be enhanced if we're planning
+            //  on implementing some sort of automatic merging capability.
+            if (args.Length == 1 && args[0] == "vortex")
+            {
+                Settings.Set("RanThroughVortex", true);
+            }
+            else
+            {
+                Settings.Set("RanThroughVortex", false);
             }
 
             MainForm = new MainForm();
