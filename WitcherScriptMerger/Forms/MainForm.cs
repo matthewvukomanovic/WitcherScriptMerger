@@ -1036,7 +1036,7 @@ namespace WitcherScriptMerger.Forms
 
         private void menuOpen_DropDownOpening(object sender, EventArgs e)
         {
-            menuOpenLoadOrderFile.Enabled = File.Exists(Program.LoadOrder.FilePath);
+            menuOpenLoadOrderFile.Enabled = File.Exists(Program.LoadOrder?.FilePath);
 
             var mergedModDir = Paths.RetrieveMergedModDir();
             menuOpenMergedModDir.Enabled = (mergedModDir != null && Directory.Exists(mergedModDir));
